@@ -1,0 +1,31 @@
+---
+- name: Install and configure Cockpit.  Add Cockpit user.
+  hosts: myhosts
+  become: true
+
+  tasks:
+  
+     # prompt for user &  prompt for password 
+
+      # TASK 3    
+     - name: print credentials
+
+      # TASK 4
+     - name: Install redhat cockpit
+
+      # TASK 5
+     - name: Start redhat cockpit
+
+      # TASK 6 - hash password with "password: "{{ user_password.user_input | password_hash('sha512') }}"
+     - name: create user from credentials
+     
+       # TASK 7 - Check its up
+     - name: Check if Cockpit is running 
+
+      # TASK 8 - Show the URL
+      # 
+      # ansible.builtin.debug:
+      #  msg: 'Cockpit url: https://{{ inventory_hostname }}:9090'
+     - name: print redhat cockpit url  
+
+
