@@ -8,10 +8,10 @@
   tasks:
   
      # TASK 0
-     - name: prompt for user and register variable
+     - name: prompt for variable 'user' and register variable
      
      # TASK 1
-     - name: prompt for password and register variable     
+     - name: prompt for variable 'user_password' and register variable     
 
       # TASK 2   
      - name: print user

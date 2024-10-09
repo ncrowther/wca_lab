@@ -20,7 +20,7 @@
        ansible.builtin.pause:
          prompt: Please enter your password
          echo: true
-       register: password_input
+       register: user_password
 
 
       # TASK 2   
@@ -49,7 +49,7 @@
      - name: create user from credentials
        ansible.builtin.user:
          name: "{{ user_input.user_input }}"
-         password: "{{ password_input.user_input | password_hash('sha512') }}"
+         password: "{{ user_password.user_input | password_hash('sha512') }}"
          shell: /bin/bash
          groups: wheel
          append: true
