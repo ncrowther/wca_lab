@@ -54,9 +54,14 @@
       # TASK 7 - Show the URL.  NOTE WCA sometimes gets this wrong.  You need the two commands below to show the URL:
       # ansible.builtin.debug:
       #  msg: 'Cockpit url: https://{{ inventory_hostname }}:9090'
-     - name: print redhat cockpit url  
+     - name: print redhat cockpit status
        ansible.builtin.debug:
          msg: "{{ cockpit_status.stdout_lines }}"
 
+
+      # TASK 8 - Show the URL.  NOTE WCA  gets this wrong. 
+     - name: print cockpit url
+       ansible.builtin.debug:
+        msg: 'Cockpit url: https://{{ inventory_hostname }}:9090'
 
 
