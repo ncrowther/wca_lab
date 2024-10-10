@@ -7,7 +7,7 @@
 
   vars:
       user: "NTC"
-      password: "NTC"
+      _password_: "{{ user | ansible.builtin.password_hash }}"
 
   tasks:
   
@@ -20,26 +20,11 @@
       # TASK 3
      - name: Start redhat cockpit
 
-      # TASK 4 - NOTE WCA GETS THIS WRONG.  You need to hash the password with the code below:
-     #  ansible.builtin.user:
-     #    name: "{{ user }}"
-     #    password: "{{ password | password_hash('sha512') }}"
-     #    shell: /bin/bash
-     #    groups: wheel
-     #    append: true      
+      # TASK 4 - NOTE WCA SOMETIMES GETS THIS WRONG.     
      - name: create user from credentials
 
-     
-       # TASK 5 - Check its up
+       # TASK 5 
      - name: Check if Cockpit is running 
-       ansible.builtin.command: systemctl status cockpit
-       register: cockpit_status
-       changed_when: false
-       failed_when: false
 
       # TASK 6 - Show the status
      - name: print cockpit status
-
-
-
-
