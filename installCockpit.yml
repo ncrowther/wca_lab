@@ -13,55 +13,33 @@
   
       # TASK 1   
      - name: print user
-       ansible.builtin.debug:
-         msg: "{{ user }}"
 
+      # TASK 2
+     - name: Install redhat cockpit
 
       # TASK 3
-     - name: Install redhat cockpit
-       ansible.builtin.package:
-         name: cockpit
-         state: present
-
-
-      # TASK 4
      - name: Start redhat cockpit
-       ansible.builtin.service:
-         name: cockpit
-         state: started
-         enabled: true
 
-
-      # TASK 5 - NOTE WCA GETS THIS WRONG.  You need to hash the password with the  line below:
-      # password: "{{ user_password.user_input | password_hash('sha512') }}"
+      # TASK 4 - NOTE WCA GETS THIS WRONG.  You need to hash the password with the code below:
+     #  ansible.builtin.user:
+     #    name: "{{ user }}"
+     #    password: "{{ password | password_hash('sha512') }}"
+     #    shell: /bin/bash
+     #    groups: wheel
+     #    append: true      
      - name: create user from credentials
-       ansible.builtin.user:
-         name: "{{ user }}"
-         password: "{{ password | password_hash('sha512') }}"
-         shell: /bin/bash
-         groups: wheel
-         append: true
 
      
-       # TASK 6 - Check its up
+       # TASK 5 - Check its up
      - name: Check if Cockpit is running 
        ansible.builtin.command: systemctl status cockpit
        register: cockpit_status
        changed_when: false
        failed_when: false
 
-
-      # TASK 7 - Show the URL.  NOTE WCA sometimes gets this wrong.  You need the two commands below to show the URL:
-      # ansible.builtin.debug:
-      #  msg: 'Cockpit url: https://{{ inventory_hostname }}:9090'
-     - name: print redhat cockpit status
-       ansible.builtin.debug:
-         msg: "{{ cockpit_status.stdout_lines }}"
+      # TASK 6 - Show the status
+     - name: print cockpit status
 
 
-      # TASK 8 - Show the URL.  NOTE WCA  gets this wrong. 
-     - name: print cockpit url
-       ansible.builtin.debug:
-        msg: 'Cockpit url: https://{{ inventory_hostname }}:9090'
 
 
