@@ -8,38 +8,23 @@
   tasks:
   
      # TASK 0
-     - name: prompt for username and register variable
+     - name: prompt for user and register variable
      
-
-
-
-
      
      # TASK 1
      - name: prompt for password and register variable
- 
-
-
-
 
 
       # TASK 2   
-     - name: print username
-
-
+     - name: print user
 
 
       # TASK 3
      - name: Install redhat cockpit
   
 
-
-
       # TASK 4
      - name: Start redhat cockpit
-    
-
-
 
 
       # TASK 5 - NOTE WCA GETS THIS WRONG.  You need to hash the password with the  line below:
@@ -47,17 +32,13 @@
      - name: create user from credentials
 
 
-
-
-
       # TASK 6 - Check its up
      - name: Check if Cockpit is running 
 
 
-
       # TASK 7 - Show the URL.
-     - name:  display redhat cockpit website URL https://{{ inventory_hostname }}:{{port}}
-     
+     - name:  display cockpit website URL with host port
+
 
 
 
