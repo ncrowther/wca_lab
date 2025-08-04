@@ -9,75 +9,57 @@
   
      # TASK 0
      - name: prompt for user and register variable
-       prompt: What is your username?
-       private: false
-       register: username
      
 
 
 
+
+     
      # TASK 1
      - name: prompt for password and register variable
-       prompt: What is your password?
-       private: true
-       register: password
  
 
 
 
+
+
       # TASK 2   
-     - name: print variables
-       ansible.builtin.debug:
-         msg:
-           - 'username: {{ username.user_input }}'
-           - 'password: {{ _password_ }}'
+     - name: print user
 
 
 
 
       # TASK 3
      - name: Install redhat cockpit
-       ansible.builtin.package:
-         name: cockpit
-         state: present
   
 
 
 
       # TASK 4
      - name: Start redhat cockpit
-       ansible.builtin.service:
-         name: cockpit
-         state: started
     
+
 
 
 
       # TASK 5 - NOTE WCA GETS THIS WRONG.  You need to hash the password with the  line below:
       # password: "{{ user_password.user_input | password_hash('sha512') }}"
      - name: create user from credentials
-       ansible.builtin.user:
-         name: "{{ username.user_input }}"
-         password: "{{ user_password.user_input | password_hash('sha512') }}"
-         shell: /bin/bash
-         groups: wheel
-         append: true
+
 
 
 
 
       # TASK 6 - Check its up
      - name: Check if Cockpit is running 
-       ansible.builtin.command: systemctl is-active cockpit.socket
-       register: cockpit_status
 
 
 
-
+      # TASK 7 - Show the URL.  NOTE WCA sometimes gets this wrong.  You need the two commands below to show the URL:
+      # ansible.builtin.debug:
+      #  msg: 'Cockpit url: https://{{ inventory_hostname }}:9090'
       # TASK 7 - Show the URL.
      - name:  display cockpit URL with host port
-       ansible.builtin.debug:
-         msg: 'Cockpit url: http://{{ ansible_host}}:9090'
 
 
 
