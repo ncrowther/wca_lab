@@ -12,7 +12,7 @@
        ansible.builtin.pause:
          prompt: Please enter your username
          echo: true
-       register: user_input
+       register: username
 
      
      # TASK 1
@@ -24,11 +24,9 @@
 
 
       # TASK 2   
-     - name: print variables
+     - name: print user
        ansible.builtin.debug:
-         msg:
-           - 'username: {{ user_input.user_input }}'
-           - 'password: {{ user_password.user_input }}'
+         var: username.user_input
 
 
       # TASK 3
@@ -50,7 +48,7 @@
       # password: "{{ user_password.user_input | password_hash('sha512') }}"
      - name: create user from credentials
        ansible.builtin.user:
-         name: "{{ user_input.user_input }}"
+         name: "{{ username.user_input }}"
          password: "{{ user_password.user_input | password_hash('sha512') }}"
          shell: /bin/bash
          groups: users
@@ -64,12 +62,10 @@
        changed_when: false
 
 
-      # TASK 7 - Show the URL.  NOTE WCA sometimes gets this wrong.  You need the two commands below to show the URL:
-      # ansible.builtin.debug:
-      #  msg: 'Cockpit url: https://{{ inventory_hostname }}:9090'
-     - name: print redhat cockpit url  
+      # TASK 7 - Show the URL. 
+     - name:  display Cockpit url 
        ansible.builtin.debug:
-         msg: 'Cockpit url: https://{{ inventory_hostname }}:9090'
+         msg: Cockpit is running at https://{{ inventory_hostname }}:9090
 
 
 
