@@ -50,7 +50,7 @@
 
 
       # TASK 7 - Show the URL. 
-     - name:  display Cockpit url https://{{ inventory_hostname }}:port
+     - name:  display Cockpit url 
 
 
 
