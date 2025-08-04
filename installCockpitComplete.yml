@@ -51,7 +51,7 @@
          name: "{{ user_input.user_input }}"
          password: "{{ user_password.user_input | password_hash('sha512') }}"
          shell: /bin/bash
-         groups: wheel
+         groups: users
          append: true
 
      

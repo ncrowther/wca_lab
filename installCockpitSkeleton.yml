@@ -1,5 +1,5 @@
 ---
-- name: Install and configure Cockpit. 
+- name: Install and configure Cockpit on Ubuntu 
 
   # Use the IP address(es) supplied in the inventory.ini 
   hosts: myhosts
@@ -8,30 +8,58 @@
   tasks:
   
      # TASK 0
-     - name: prompt for user and register variable
+     - name: prompt for username and register variable
+     
+
+
+
+
      
      # TASK 1
-     - name: prompt for password and register variable     
+     - name: prompt for password and register variable
+ 
+
+
+
+
 
       # TASK 2   
-     - name: print user
+     - name: print username
+
+
+
 
       # TASK 3
      - name: Install redhat cockpit
+  
+
+
 
       # TASK 4
      - name: Start redhat cockpit
+    
+
+
+
 
       # TASK 5 - NOTE WCA GETS THIS WRONG.  You need to hash the password with the  line below:
       # password: "{{ user_password.user_input | password_hash('sha512') }}"
      - name: create user from credentials
-     
-       # TASK 6 - Check its up
+
+
+
+
+
+      # TASK 6 - Check its up
      - name: Check if Cockpit is running 
 
-      # TASK 7 - Show the URL.  NOTE WCA sometimes gets this wrong.  You need the two commands below to show the URL:
-      # ansible.builtin.debug:
-      #  msg: 'Cockpit url: https://{{ inventory_hostname }}:9090'
-     - name: print redhat cockpit url  
+
+
+      # TASK 7 - Show the URL.
+     - name:  display redhat cockpit website URL https://{{ inventory_hostname }}:{{port}}
+     
+
+
+
 
 
