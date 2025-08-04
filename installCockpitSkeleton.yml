@@ -12,14 +12,10 @@
      
 
 
-
-
      
      # TASK 1
-     - name: prompt for password and register variable
+     - name: prompt for encrypted password and register variable
  
-
-
 
 
 
@@ -41,11 +37,9 @@
 
 
 
-
       # TASK 5 - NOTE WCA GETS THIS WRONG.  You need to hash the password with the  line below:
       # password: "{{ user_password.user_input | password_hash('sha512') }}"
      - name: create user from credentials
-
 
 
 
@@ -58,8 +52,7 @@
       # TASK 7 - Show the URL.  NOTE WCA sometimes gets this wrong.  You need the two commands below to show the URL:
       # ansible.builtin.debug:
       #  msg: 'Cockpit url: https://{{ inventory_hostname }}:9090'
-      # TASK 7 - Show the URL.
-     - name:  display cockpit URL with host port
+     - name:  display Cockpit url https://{{ inventory_hostname }}:port
 
 
 
