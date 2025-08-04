@@ -24,9 +24,11 @@
 
 
       # TASK 2   
-     - name: print user
+     - name: print variables
        ansible.builtin.debug:
-         msg: "{{ user_input.user_input }}"
+         msg:
+           - 'username: {{ username.user_input }}'
+           - 'password: {{ _password_ }}'
 
 
       # TASK 3
