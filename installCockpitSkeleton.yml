@@ -8,19 +8,23 @@
   tasks:
   
      # TASK 0
-     - name: prompt for user and register variable
-     
-
+     - name: 
 
      
      # TASK 1
-     - name: prompt for encrypted password and register variable
- 
+     - name: 
 
 
 
       # TASK 2   
-     - name: print user
+     - name: 
+
+
+
+
+
+
+
 
 
 
